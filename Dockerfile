@@ -1,5 +1,7 @@
 FROM alpine:latest as rclone
 
+LABEL org.opencontainers.image.source https://github.com/WikiTeq/restic-backup-docker
+
 # Get rclone executable
 ADD https://downloads.rclone.org/rclone-current-linux-amd64.zip /
 RUN unzip rclone-current-linux-amd64.zip && mv rclone-*-linux-amd64/rclone /bin/rclone && chmod +x /bin/rclone
