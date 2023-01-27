@@ -19,6 +19,14 @@ else
     echo "Pre-backup script not found ..."
 fi
 
+if [ -n "$RESTIC_PRE_BACKUP" ]; then
+    echo "Starting pre-backup command ..."
+    eval "$RESTIC_PRE_BACKUP"
+    echo "Done"
+else
+    echo "Pre-backup command not found ..."
+fi
+
 start=`date +%s`
 rm -f ${lastLogfile} ${lastMailLogfile}
 echo "Starting Backup at $(date +"%Y-%m-%d %H:%M:%S")"
@@ -85,4 +93,12 @@ if [ -f "/hooks/post-backup.sh" ]; then
     /hooks/post-backup.sh $backupRC
 else
     echo "Post-backup script not found ..."
+fi
+
+if [ -n "$RESTIC_POST_BACKUP" ]; then
+    echo "Starting post-backup command ..."
+    eval "$RESTIC_POST_BACKUP"
+    echo "Done"
+else
+    echo "Post-backup command not found ..."
 fi
