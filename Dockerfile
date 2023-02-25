@@ -8,7 +8,7 @@ RUN unzip rclone-current-linux-amd64.zip && mv rclone-*-linux-amd64/rclone /bin/
 
 FROM restic/restic:0.14.0
 
-RUN apk add --update --no-cache heirloom-mailx fuse curl mysql-client
+RUN apk add --update --no-cache heirloom-mailx fuse curl mysql-client mariadb-connector-c-dev
 
 COPY --from=rclone /bin/rclone /bin/rclone
 

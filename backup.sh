@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#set -x;
+
 lastLogfile="/var/log/backup-last.log"
 lastMailLogfile="/var/log/mail-last.log"
 lastMicrosoftTeamsLogfile="/var/log/microsoft-teams-last.log"
